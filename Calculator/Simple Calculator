@@ -21,7 +21,7 @@ print("3. Multiplication")
 print("4. Division")
 print("5. Exit")
 
-def calculator:
+def calculator():
     print("Welcome to the Calculator!")
     print("Please select an operation:")
     print("1. Addition")
