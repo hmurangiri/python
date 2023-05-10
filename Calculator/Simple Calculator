@@ -48,17 +48,21 @@ def calculator():
 
         if operation == "1":
             result = add(num1, num2)
-            print("Result:", result)
         elif operation == "2":
             result = subtract(num1, num2)
-            print("Result:", result)
         elif operation == "3":
             result = multiply(num1, num2)
-            print("Result:", result)
         elif operation == "4":
             result = divide(num1, num2)
-            print("Result:", result)
         else:
             print("Invalid operation")
             
+        print("Result: ", result)
+        
+        save_result = input("Do you want to save the result? (yes/no): ")
+        
+        if save_result.lower() == "yes":
+            with open("calculator_results.txt", "a") as file:
+                file.write(f"{num1} {operation} {num2} = {result}\n") 
+                
 calculator()
