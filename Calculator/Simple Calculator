@@ -1,3 +1,5 @@
+import math
+
 def add(num1, num2):
     return num1 + num2
 
@@ -13,13 +15,11 @@ def divide(num1, num2):
     else:
         return "Error: Cannot divide by zero!"
     
-print("Welcome to the Calculator!")
-print("Please select an operation:")
-print("1. Addition")
-print("2. Subtraction")
-print("3. Multiplication")
-print("4. Division")
-print("5. Exit")
+def power(num1, num2):
+    return num1 ** num2
+
+def square_root(num):
+    return math.sqrt(num)
 
 def calculator():
     print("Welcome to the Calculator!")
@@ -28,41 +28,56 @@ def calculator():
     print("2. Subtraction")
     print("3. Multiplication")
     print("4. Division")
-    print("5. Exit")
-    
-    while True:
-        operation = input("Enter the operation number (1-5): ")
+    print("5. Power")
+    print("6. Square Root")
+    print("7. Trigonometric Functions")
+    print("8. Exit")
 
-        if operation == "5":
+    while True:
+        operation = input("Enter the operation number (1-8): ")
+
+        if operation == "8":
             print("Exiting the calculator...")
             break
 
-        if operation not in ["1", "2", "3", "4"]:
+        if operation not in ["1", "2", "3", "4", "5", "6", "7"]:
             print("Invalid operation. Please try again.")
             continue
 
-        num1 = float(input("Enter the first number: "))
-        num2 = float(input("Enter the second number: "))
-
-        result = 0
-
-        if operation == "1":
-            result = add(num1, num2)
-        elif operation == "2":
-            result = subtract(num1, num2)
-        elif operation == "3":
-            result = multiply(num1, num2)
-        elif operation == "4":
-            result = divide(num1, num2)
+        if operation == "6":
+            num = float(input("Enter a number: "))
+            result = square_root(num)
+            print(f"Square root of {num} = {result}")
+        elif operation == "7":
+            angle = float(input("Enter an angle in degrees: "))
+            angle_rad = math.radians(angle)
+            print("Trigonometric functions:")
+            print(f"Sin({angle}) = {math.sin(angle_rad)}")
+            print(f"Cos({angle}) = {math.cos(angle_rad)}")
+            print(f"Tan({angle}) = {math.tan(angle_rad)}")
         else:
-            print("Invalid operation")
-            
-        print("Result: ", result)
-        
+            num1 = float(input("Enter the first number: "))
+            num2 = float(input("Enter the second number: "))
+
+            result = 0
+
+            if operation == "1":
+                result = add(num1, num2)
+            elif operation == "2":
+                result = subtract(num1, num2)
+            elif operation == "3":
+                result = multiply(num1, num2)
+            elif operation == "4":
+                result = divide(num1, num2)
+            elif operation == "5":
+                result = power(num1, num2)
+
+            print("Result:", result)
+
         save_result = input("Do you want to save the result? (yes/no): ")
-        
+
         if save_result.lower() == "yes":
             with open("calculator_results.txt", "a") as file:
-                file.write(f"{num1} {operation} {num2} = {result}\n") 
+                file.write(f"{num1} {operation} {num2} = {result}\n")
                 
 calculator()
