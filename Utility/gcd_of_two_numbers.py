@@ -1,16 +1,10 @@
-def gcd_of_two_numbers(a,b):
-    if a > b:
-        pass
-    else:
+def gcd_of_two_Numbers(a,b):
+    if a < b:
         a, b = b , a
 
     if b == 0:
         return 0
-      
-    while True:
-        if a % b == 0:
-            return b
-        else:
-            a, b = b, a % b
-            
-    return gcd
+        
+    while(b != 0):
+        a, b = b, a % b
+        return a
