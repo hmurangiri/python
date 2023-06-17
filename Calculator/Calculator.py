@@ -46,7 +46,7 @@ def calculator():
     print("8. Percentage")
     print("9. Average")
     print("10. Exit")
-
+    
     while True:
         operation = input("Enter the operation number (1-10): ")
 
@@ -104,5 +104,3 @@ def calculator():
         if save_result.lower() == "yes":
             with open("calculator_results.txt", "a") as file:
                 file.write(f"{num1} {operation} {num2} = {result}\n")
-
-calculator()
